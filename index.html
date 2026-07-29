@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eduardo Deschamps — Analista de Implantação &amp; Sustentação</title>
+<meta name="description" content="Portfólio de Eduardo Deschamps — Analista de Implantação e Sustentação especializado em bancos de dados, integrações e suporte técnico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1220;
+    --panel:#101A2E;
+    --panel-2:#152238;
+    --line:#233151;
+    --text:#E8EAED;
+    --muted:#8B96A8;
+    --amber:#E8A33D;
+    --amber-dim:#5C4321;
+    --cyan:#4FD1C5;
+    --radius:10px;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(232,163,61,0.06), transparent 40%),
+      radial-gradient(circle at 85% 60%, rgba(79,209,197,0.05), transparent 45%);
+  }
+  a{color:inherit;text-decoration:none;}
+  ::selection{background:var(--amber);color:var(--ink);}
+  :focus-visible{outline:2px solid var(--amber);outline-offset:3px;}
+
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:960px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--mono);font-size:14px;color:var(--amber);
+    letter-spacing:0.5px;
+  }
+  .logo span{color:var(--muted);}
+  nav.links{display:flex;gap:28px;font-family:var(--mono);font-size:13px;color:var(--muted);}
+  nav.links a{transition:color .2s;}
+  nav.links a:hover{color:var(--amber);}
+  .nav-cta{
+    font-family:var(--mono);font-size:13px;
+    border:1px solid var(--amber-dim);
+    color:var(--amber);
+    padding:7px 14px;border-radius:6px;
+    transition:background .2s,border-color .2s;
+  }
+  .nav-cta:hover{background:rgba(232,163,61,0.1);border-color:var(--amber);}
+  @media (max-width:640px){ nav.links{display:none;} }
+
+  /* HERO */
+  .hero{padding:80px 0 60px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:13px;color:var(--cyan);
+    display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .eyebrow::before{
+    content:"";width:8px;height:8px;border-radius:50%;
+    background:var(--cyan);box-shadow:0 0 0 3px rgba(79,209,197,0.15);
+    animation:pulse 2s infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.4;}}
+
+  .terminal{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:0 20px 60px -20px rgba(0,0,0,0.6);
+  }
+  .term-bar{
+    display:flex;align-items:center;gap:8px;
+    padding:12px 16px;
+    background:var(--panel-2);
+    border-bottom:1px solid var(--line);
+  }
+  .term-dot{width:11px;height:11px;border-radius:50%;}
+  .term-bar .term-dot:nth-child(1){background:#5C4321;}
+  .term-bar .term-dot:nth-child(2){background:#4A5570;}
+  .term-bar .term-dot:nth-child(3){background:#2E3A55;}
+  .term-title{
+    margin-left:8px;font-family:var(--mono);font-size:12px;color:var(--muted);
+  }
+  .term-body{padding:28px 28px 32px;font-family:var(--mono);}
+  .term-line{font-size:14px;color:var(--muted);margin-bottom:4px;}
+  .term-line .prompt{color:var(--cyan);}
+  .query{font-size:14px;color:var(--text);margin:6px 0 22px;line-height:1.9;}
+  .kw{color:var(--amber);}
+  .str{color:var(--cyan);}
+  .col{color:var(--text);}
+
+  h1.name{
+    font-family:var(--display);
+    font-size:clamp(34px,6vw,54px);
+    font-weight:700;
+    letter-spacing:-0.5px;
+    margin-bottom:8px;
+  }
+  .role{
+    font-family:var(--mono);
+    color:var(--muted);
+    font-size:15px;
+    margin-bottom:20px;
+  }
+  .role em{font-style:normal;color:var(--amber);}
+  .summary{max-width:640px;color:var(--muted);font-size:15.5px;margin-bottom:26px;}
+  .hero-meta{
+    display:flex;flex-wrap:wrap;gap:18px;
+    font-family:var(--mono);font-size:13px;color:var(--muted);
+    border-top:1px solid var(--line);
+    padding-top:20px;
+  }
+  .hero-meta a:hover{color:var(--amber);}
+
+  /* SECTION HEADERS */
+  .section{padding:64px 0;border-top:1px solid var(--line);}
+  .sec-head{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:36px;
+  }
+  .sec-tag{
+    font-family:var(--mono);font-size:13px;color:var(--amber);
+    white-space:nowrap;
+  }
+  .sec-title{
+    font-family:var(--display);font-size:26px;font-weight:600;
+  }
+  .sec-rule{flex:1;height:1px;background:var(--line);}
+
+  /* SOBRE */
+  .about-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;}
+  @media (max-width:720px){.about-grid{grid-template-columns:1fr;}}
+  .about-text p{color:var(--muted);margin-bottom:14px;font-size:15.5px;}
+  .about-text strong{color:var(--text);font-weight:600;}
+  .stat-card{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:20px;margin-bottom:14px;
+  }
+  .stat-num{font-family:var(--display);font-size:28px;color:var(--amber);font-weight:700;}
+  .stat-label{font-family:var(--mono);font-size:12.5px;color:var(--muted);margin-top:4px;}
+
+  /* EXPERIENCE */
+  .exp-item{
+    display:grid;grid-template-columns:170px 1fr;gap:24px;
+    padding:24px 0;border-bottom:1px solid var(--line);
+  }
+  .exp-item:last-child{border-bottom:none;}
+  @media (max-width:640px){.exp-item{grid-template-columns:1fr;gap:6px;}}
+  .exp-period{
+    font-family:var(--mono);font-size:12.5px;color:var(--muted);
+    padding-top:3px;
+  }
+  .exp-period .current{
+    display:inline-block;margin-top:8px;
+    font-size:10.5px;color:var(--ink);background:var(--cyan);
+    padding:2px 7px;border-radius:4px;font-weight:600;letter-spacing:.3px;
+  }
+  .exp-role{font-family:var(--display);font-size:18px;font-weight:600;margin-bottom:2px;}
+  .exp-org{font-size:14px;color:var(--amber);font-family:var(--mono);margin-bottom:12px;}
+  .exp-list{list-style:none;}
+  .exp-list li{
+    position:relative;padding-left:18px;margin-bottom:8px;
+    color:var(--muted);font-size:14.5px;
+  }
+  .exp-list li::before{
+    content:"→";position:absolute;left:0;color:var(--cyan);font-size:13px;
+  }
+  .exp-item.compact .exp-list{display:none;}
+  .exp-item.compact{padding:14px 0;}
+  .exp-item.compact .exp-role{font-size:15px;}
+
+  /* SKILLS - network diagram */
+  .skills-wrap{display:grid;grid-template-columns:1fr;gap:32px;}
+  .skill-group{margin-bottom:22px;}
+  .skill-group-title{
+    font-family:var(--mono);font-size:12.5px;color:var(--cyan);
+    text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;
+  }
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chip{
+    font-family:var(--mono);font-size:13px;color:var(--text);
+    background:var(--panel);border:1px solid var(--line);
+    padding:7px 12px;border-radius:6px;
+    transition:border-color .2s,transform .15s;
+  }
+  .chip:hover{border-color:var(--amber);transform:translateY(-2px);}
+
+  .diagram-note{
+    font-family:var(--mono);font-size:12.5px;color:var(--muted);
+    margin-top:28px;padding-top:20px;border-top:1px solid var(--line);
+  }
+
+  /* EDUCATION */
+  .edu-item{
+    padding:18px 0;border-bottom:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  }
+  .edu-item:last-child{border-bottom:none;}
+  .edu-degree{font-family:var(--display);font-size:16px;font-weight:600;}
+  .edu-school{font-size:14px;color:var(--muted);margin-top:2px;}
+  .edu-date{font-family:var(--mono);font-size:12.5px;color:var(--amber);white-space:nowrap;}
+
+  /* CONTACT / FOOTER */
+  .contact-box{
+    background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:40px;text-align:center;
+  }
+  .contact-box h2{
+    font-family:var(--display);font-size:28px;margin-bottom:10px;
+  }
+  .contact-box p{color:var(--muted);margin-bottom:26px;font-size:15px;}
+  .contact-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .contact-link{
+    font-family:var(--mono);font-size:13.5px;
+    border:1px solid var(--amber-dim);color:var(--amber);
+    padding:10px 18px;border-radius:6px;
+    transition:background .2s,border-color .2s;
+  }
+  .contact-link:hover{background:rgba(232,163,61,0.1);border-color:var(--amber);}
+  footer{
+    text-align:center;padding:32px 24px 48px;
+    font-family:var(--mono);font-size:12px;color:var(--muted);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .eyebrow::before{animation:none;}
+    .chip{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo">eduardo<span>@</span>deschamps<span>:~$</span></div>
+    <nav class="links">
+      <a href="#sobre">sobre</a>
+      <a href="#experiencia">experiência</a>
+      <a href="#competencias">competências</a>
+      <a href="#formacao">formação</a>
+    </nav>
+    <a class="nav-cta" href="#contato">contato</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="eyebrow">disponível para novas oportunidades</div>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <span class="term-dot"></span><span class="term-dot"></span><span class="term-dot"></span>
+        <span class="term-title">console — perfil.sql</span>
+      </div>
+      <div class="term-body">
+        <div class="term-line"><span class="prompt">$</span> select especialidade, stack from analista where nome = 'Eduardo Deschamps';</div>
+        <div class="query">
+          <span class="kw">SELECT</span> <span class="col">implantação</span>, <span class="col">sustentação</span>, <span class="col">integrações</span><br>
+          <span class="kw">FROM</span> carreira<br>
+          <span class="kw">WHERE</span> banco_de_dados <span class="kw">IN</span> (<span class="str">'SQL Server'</span>, <span class="str">'PostgreSQL'</span>, <span class="str">'MySQL'</span>, <span class="str">'Oracle'</span>, <span class="str">'MongoDB'</span>)<br>
+          <span class="kw">AND</span> sistema_operacional = <span class="str">'Linux'</span>
+          <span class="kw">AND</span> sla &gt; <span class="str">95</span>;
+        </div>
+
+        <h1 class="name">Eduardo Deschamps</h1>
+        <div class="role">Analista de Implantação &amp; Sustentação <em>·</em> Banco de Dados <em>·</em> Integrações <em>·</em> Linux <em>·</em> Java</div>
+        <p class="summary">
+          Atuo na ponte entre sistemas de negócio e a infraestrutura que os sustenta: da resolução de incidentes críticos
+          à modelagem de integrações confiáveis entre ERP, e-commerce e bancos de dados relacionais. Interesse contínuo
+          em expandir para o desenvolvimento de software, unindo prática de sustentação com construção de soluções.
+        </p>
+
+        <div class="hero-meta">
+          <span>📍 Blumenau, SC — Brasil</span>
+          <a href="tel:+5547992103610">📞 (47) 99210-3610</a>
+          <a href="mailto:eduardo.ddeschamps@gmail.com">✉ eduardo.ddeschamps@gmail.com</a>
+          <a href="https://linkedin.com/in/eduardodeschamps96ba731b9" target="_blank" rel="noopener">↗ LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="section" id="sobre">
+    <div class="sec-head">
+      <span class="sec-tag">01 · sobre</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          <strong>Analista de sustentação e implantação</strong> com trajetória consolidada em sistemas ERP e forte
+          atuação em bancos de dados relacionais e não relacionais. Meu trabalho tem foco em manter a consistência,
+          o desempenho e a confiabilidade das informações que sustentam processos críticos de negócio — do
+          troubleshooting de integrações via SOAP/API até a otimização de queries e criação de dashboards de
+          monitoramento.
+        </p>
+        <p>
+          Tenho conhecimento em desenvolvimento de software em diferentes linguagens, transitando entre análise,
+          modelagem e implementação. Busco unir a experiência prática de sustentação com atualização técnica
+          constante, gerando valor real para as organizações em que atuo.
+        </p>
+      </div>
+      <div class="about-stack">
+        <div class="stat-card">
+          <div class="stat-num">95%+</div>
+          <div class="stat-label">SLA mantido no atendimento de chamados</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">7</div>
+          <div class="stat-label">bancos de dados diferentes em produção</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">anos de experiência em suporte, QA e implantação</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section class="section" id="experiencia">
+    <div class="sec-head">
+      <span class="sec-tag">02 · experiência</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Jan 2026 — atual<br>Blumenau, SC<div class="current">7 meses</div></div>
+      <div>
+        <div class="exp-role">Analista de Sustentação Pleno</div>
+        <div class="exp-org">Karsten S.A.</div>
+        <ul class="exp-list">
+          <li>Redução do backlog de chamados, mantendo o SLA acima de 95%</li>
+          <li>Análise e correção de falhas em integrações entre sistemas de varejo, e-commerce e ERP (Senior)</li>
+          <li>Envio, monitoramento e troubleshooting de requisições via SOAP e APIs</li>
+          <li>Gestão de fornecedores, garantindo conformidade, qualidade e cumprimento de prazos</li>
+          <li>Consultas, análises e otimização de queries em banco de dados SQL</li>
+          <li>Criação de dashboards e monitoramento de sistemas utilizando Grafana</li>
+          <li>Mapeamento e melhoria contínua de processos operacionais</li>
+          <li>Suporte técnico de nível avançado para áreas internas e clientes</li>
+          <li>Documentação de processos, integrações e procedimentos técnicos</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item compact">
+      <div class="exp-period">Ago 2025 — Nov 2025<br>Blumenau, SC</div>
+      <div>
+        <div class="exp-role">Analista de Implantação</div>
+        <div class="exp-org">HETERNUM</div>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Ago 2024 — Jul 2025<br>Blumenau, SC</div>
+      <div>
+        <div class="exp-role">Analista de Implantação / Analista de Suporte</div>
+        <div class="exp-org">FW7 Soluções</div>
+        <ul class="exp-list">
+          <li>Suporte técnico e acompanhamento de clientes, solucionando erros em rotinas de integrações</li>
+          <li>Criação e manutenção de integrações entre a FW7 e os ERPs de clientes</li>
+          <li>Desenvolvimento de views e consultas complexas (MySQL, PostgreSQL, Oracle, MongoDB, MariaDB)</li>
+          <li>Automação de processos com Python, aumentando produtividade e reduzindo erros manuais</li>
+          <li>Análise de dados e otimização de fluxos de trabalho dentro do ERP</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-period">Jan 2024 — Mai 2024<br>Blumenau, SC</div>
+      <div>
+        <div class="exp-role">Desenvolvedor Front End</div>
+        <div class="exp-org">Guia Fácil Comunicação</div>
+        <ul class="exp-list">
+          <li>Desenvolvimento e integração de APIs entre sistemas e aplicações</li>
+          <li>Desenvolvimento web full-stack com JavaScript, TypeScript e Nuxt3</li>
+          <li>Estruturação e manutenção de bancos de dados em MySQL e MongoDB</li>
+          <li>Interfaces responsivas com Tailwind CSS · versionamento com Git · Kanban/Jira</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item compact">
+      <div class="exp-period">Jan 2023 — Jan 2024<br>Blumenau, SC</div>
+      <div>
+        <div class="exp-role">Analista de QA</div>
+        <div class="exp-org">Guia Fácil Comunicação — testes manuais e gestão ágil com Kanban/Jira</div>
+      </div>
+    </div>
+
+    <div class="exp-item compact">
+      <div class="exp-period">Mar 2022 — Jan 2023</div>
+      <div>
+        <div class="exp-role">Estagiário</div>
+        <div class="exp-org">Guia Fácil Comunicação</div>
+      </div>
+    </div>
+
+    <div class="exp-item compact">
+      <div class="exp-period">Jan 2020 — Mar 2022</div>
+      <div>
+        <div class="exp-role">Menor Aprendiz</div>
+        <div class="exp-org">Guia Fácil Comunicação</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCIAS -->
+  <section class="section" id="competencias">
+    <div class="sec-head">
+      <span class="sec-tag">03 · competências</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="skills-wrap">
+      <div class="skill-group">
+        <div class="skill-group-title">Bancos de dados</div>
+        <div class="chips">
+          <span class="chip">SQL Server</span><span class="chip">MySQL</span><span class="chip">PostgreSQL</span>
+          <span class="chip">Firebird</span><span class="chip">Oracle</span><span class="chip">MongoDB</span><span class="chip">MariaDB</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Linguagens &amp; frameworks</div>
+        <div class="chips">
+          <span class="chip">Java</span><span class="chip">Python</span><span class="chip">JavaScript</span>
+          <span class="chip">TypeScript</span><span class="chip">Vue / Nuxt3</span><span class="chip">Tailwind CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Integrações &amp; APIs</div>
+        <div class="chips">
+          <span class="chip">SOAP</span><span class="chip">REST</span><span class="chip">Integrações ERP</span><span class="chip">E-commerce</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Ferramentas &amp; metodologias</div>
+        <div class="chips">
+          <span class="chip">Git</span><span class="chip">Linux</span><span class="chip">Kanban</span>
+          <span class="chip">Jira</span><span class="chip">Grafana</span>
+        </div>
+      </div>
+    </div>
+    <div class="diagram-note">// documentação técnica · análise e migração de dados · suporte e sustentação de sistemas</div>
+  </section>
+
+  <!-- FORMACAO -->
+  <section class="section" id="formacao">
+    <div class="sec-head">
+      <span class="sec-tag">04 · formação</span>
+      <div class="sec-rule"></div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">Bacharelado em Sistemas da Informação</div>
+        <div class="edu-school">FURB — Universidade Regional de Blumenau</div>
+      </div>
+      <div class="edu-date">concluído jan/2025</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">Análise e Desenvolvimento de Sistemas</div>
+        <div class="edu-school">Unisenai Santa Catarina</div>
+      </div>
+      <div class="edu-date">concluído fev/2023</div>
+    </div>
+    <div class="edu-item">
+      <div>
+        <div class="edu-degree">Curso Técnico Integrado em Desenvolvimento de Sistemas</div>
+        <div class="edu-school">SENAI/SC</div>
+      </div>
+      <div class="edu-date">fev/2023 — dez/2024</div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section class="section" id="contato">
+    <div class="sec-head">
+      <span class="sec-tag">05 · contato</span>
+      <div class="sec-rule"></div>
+    </div>
+    <div class="contact-box">
+      <h2>Vamos conversar?</h2>
+      <p>Aberto a oportunidades em sustentação, implantação, bancos de dados e integração de sistemas.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:eduardo.ddeschamps@gmail.com">✉ eduardo.ddeschamps@gmail.com</a>
+        <a class="contact-link" href="tel:+5547992103610">📞 (47) 99210-3610</a>
+        <a class="contact-link" href="https://linkedin.com/in/eduardodeschamps96ba731b9" target="_blank" rel="noopener">↗ LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Eduardo Deschamps · Blumenau, SC — Brasil
+</footer>
+
+</body>
+</html>
